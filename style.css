@@ -1,480 +1,315 @@
-/* Réinitialisation */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Couleurs */
-:root {
-  --orange: #ff6600;
-  --rouge: #ff0040;
-  --noir: #111;
-  --blanc: #fff;
-}
-
-/* Général */
-body, html {
+/* BODY */
+body {
   font-family: 'Arial', sans-serif;
-  height: 100%;
-  color: var(--blanc);
-  overflow-x: hidden;
-  background-color: var(--noir);
+  color: white;
+  background: url('media/carte.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  min-height: 100vh;
+  line-height: 1.5;
+  text-align: center;
 }
 
-/* Vidéo de fond pour la section Accueil */
+/* VIDEO DE FOND */
 #background-video {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   object-fit: cover;
   z-index: -1;
-  pointer-events: none;
+  opacity: 100;
 }
 
-/* Navbar */
+/* NAVBAR */
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 15px;
-  z-index: 100;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
-
 .navbar ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 2rem;
 }
-
 .navbar a {
-  text-decoration: none;
-  color: var(--blanc);
+  color: #ff6600;
   font-weight: bold;
-  transition: color 0.3s;
+  text-decoration: none;
+  font-size: 1.1rem;
 }
-
 .navbar a:hover {
-  color: var(--rouge);
+  color: #ff3300;
 }
 
-/* Sections */
+/* SECTIONS GÉNÉRALES */
 .section {
-  padding: 80px 20px;
+  max-width: 960px;
+  margin: 3rem auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2rem 2rem;
+  border-radius: 12px;
   text-align: center;
 }
 
-/* Section Accueil */
+/* ESPACEMENT ENTRE BLOCS */
+.spacing {
+  margin-top: 4rem;
+}
+
+/* TITRES */
+h1, h2 {
+  color: #ff6600;
+  margin-bottom: 1rem;
+}
+
+/* PAGE D'ACCUEIL */
 .accueil {
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5); /* Légère opacité pour le texte */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--blanc);
-  text-align: center;
 }
-
 .accueil h1 {
-  font-size: 80px; /* Taille plus grande pour le titre */
-  font-weight: bold;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  font-size: 4rem;
+  color: #fff;
+}
+.accueil h2 {
+  font-size: 2.5rem;
+  color: #ff6600;
 }
 
-.accueil p {
-  font-size: 50px; /* Taille plus petite pour le sous-titre */
-  margin-top: 20px;
-  font-weight: lighter;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+/* TEXTE */
+p, li {
+  font-size: 1.1rem;
 }
 
-/* Section À propos */
-.a-propos {
-  background: url('media/deventure.jpg') no-repeat center center fixed;
-  background-size: cover;
-  padding: 80px 40px;
-  color: var(--blanc);
+/* PRODUITS */
+.produits-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.produit-category {
+  background: rgba(255, 102, 0, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+}
+.produit-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ff660033;
+  padding: 0.5rem 0;
+  color: white;
 }
 
-.a-propos h2 {
-  font-size: 40px;
-  font-weight: bold;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-}
-
-.a-propos ul {
-  list-style-type: none;
-  margin-top: 20px;
-}
-
-.a-propos li {
-  font-size: 25px;
-  margin: 20px 0;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
-}
-
-/* Sections Nos Produits, Nous Trouver, etc. */
-.nos-produits {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.nous-trouver {
-  background: var(--orange);
-  color: var(--noir);
-}
-
-.nous-rejoindre, .nous-contacter {
-  background: var(--rouge);
-  color: var(--blanc);
-}
-
-/* Boutons */
+/* BOUTONS */
 .btn {
   display: inline-block;
-  background-color: var(--blanc);
-  color: var(--noir);
-  padding: 10px 20px;
-  border-radius: 5px;
+  background-color: #8B0000;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 20px;
   text-decoration: none;
-  margin-top: 15px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+.btn:hover {
+  background-color: #cc3608;
+}
+
+/* A PROPOS : LISTE EMPLOYÉS */
+#a-propos ul {
+  list-style-type: none;
+  margin-top: 1rem;
+}
+#a-propos li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #333;
+}
+
+/* MAP */
+.map-container {
+  text-align: center;
+}
+.map {
+  max-width: 100%;
+  border-radius: 12px;
+  border: 2px solid #ff6600;
+}
+
+/* CONTACT */
+#contact {
+  text-align: center;
+}
+#contact a {
+  color: #ff9999;
+  text-decoration: none;
   font-weight: bold;
 }
 
-.btn:hover {
-  background-color: var(--orange);
+/* LOGO */
+#nous-rejoindre {
+  text-align: center; /* centre tout horizontalement */
 }
 
-/* Carte */
-.map {
-  width: 100%;
-  max-width: 600px;
+#gif {
+  display: block;
+  margin: 0 auto; /* centre le gif */
+  max-width: 100%;  /* responsive */
   height: auto;
 }
 
-/* Responsiveness */
-@media (max-width: 768px) {
-  .menu-items {
+/* Conteneur boutons */
+.boutons {
+  margin-top: 10px; /* espace au-dessus des boutons */
+  display: flex;
+  justify-content: center; /* centre les boutons horizontalement */
+  gap: 20px; /* espace entre les boutons */
+}
+
+/* Style boutons */
+.boutons button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+
+/* PARTENAIRES */
+#partenaires h2 {
+  margin-bottom: 2rem;
+}
+.partenaire-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid #ff6600;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 12px;
+  max-width: 600px;
+}
+.commander {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+  background: rgba(0, 0, 0, 0.6); /* Fond foncé semi-transparent */
+  color: white;
+}
+
+#commande-form {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid #ff1f1f;
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+}
+
+#commande-form h3 {
+  color: #ffae00;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+#commande-form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+#commande-form input[type="text"],
+#commande-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+}
+
+#commande-form input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+
+#commande-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+#commande-form button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #ff1f1f;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#commande-form button:hover {
+  background-color: #ffae00;
+  color: black;
+}
+/* RESPONSIVE */
+@media (max-width: 500px) {
+  .navbar ul {
     flex-direction: column;
+    gap: 1rem;
+  }
+  .produits-grille {
+    grid-template-columns: 1fr;
+  }
+  .accueil h1 {
+    font-size: 2.5rem;
+  }
+  .accueil h2 {
+    font-size: 1.5rem;
   }
 }
-/* Texte sur l'engagement local */
-.a-propos .engagement-local {
-  font-size: 20px;
-  color: var(--blanc);
-  margin-bottom: 20px;
-  line-height: 1.6;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
-  font-weight: normal;
+html {
+  scroll-behavior: smooth;
 }
 
-.a-propos .engagement-local strong {
-  font-size: 40px;
-  font-weight: bold;
-  color: var(--orange); /* Couleur distincte pour le titre */
-}
-/* Réinitialisation */
-* {
-  margin: 0;
-  padding: 0;
+.section {
+  min-height: 100vh; /* chaque section prend au moins la hauteur de l'écran */
+  padding: 80px 20px; /* espace intérieur en haut/bas et sur les côtés */
   box-sizing: border-box;
+  scroll-margin-top: 100px; /* espace pour éviter que la section soit cachée sous la navbar */
 }
 
-/* Couleurs */
-:root {
-  --orange: #ff6600; /* Couleur principale */
-  --rouge: #ff0040;   /* Couleur secondaire */
-  --noir: #111111;    /* Couleur de fond */
-  --blanc: #ffffff;   /* Couleur d'accent */
-}
-
-/* Général */
-body, html {
-  font-family: 'Arial', sans-serif;
-  height: 100%;
-  color: var(--blanc);
-  overflow-x: hidden;
-  background-color: var(--noir);
-}
-
-/* Vidéo de fond */
-#background-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 15px;
-  z-index: 100;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8); /* fond semi-transparent si souhaité */
 }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: var(--blanc);
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.navbar a:hover {
-  color: var(--rouge);
-}
-
-/* Sections */
-.section {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.accueil {
-  background: rgba(0, 0, 0, 0.5);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* Section Nos produits */
-.nos-produits {
-  background: rgba(0, 0, 0, 0.8); /* Pour garder une bonne visibilité avec la vidéo */
-  color: var(--blanc);
-  padding: 80px 20px;
-}
-
-.produits-grille {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px; /* Augmenter l'espace entre les sections */
-  padding: 40px;
-  justify-items: center;
-}
-
-.produit-category {
-  background: rgba(0, 0, 0, 0.7); /* Légère transparence pour contraster avec le fond */
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  margin-bottom: 40px; /* Espacement entre les catégories */
-}
-
-.produit-category h3 {
-  font-size: 28px;
-  margin-bottom: 15px;
-  color: var(--orange);
-  font-weight: bold;
-}
-
-.produit-item {
-  margin: 15px 0;
-  font-size: 22px;
-}
-
-.produit-name {
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-.produit-prix {
-  font-size: 22px;
-  color: var(--rouge);
-}
-
-@media (max-width: 768px) {
-  .produits-grille {
-    grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur mobile */
-  }
-}
-
-/* Section À propos */
-.a-propos {
-  background: url('media/deventure.jpg') no-repeat center center fixed;
-  background-size: cover;
-  padding: 80px 20px;
-  text-align: center;
-  color: var(--blanc);
-}
-
-.a-propos h2 {
-  font-size: 70px;
-  font-weight: bold;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-}
-
-.a-propos ul {
-  list-style-type: none;
-  margin-top: 20px;
-}
-
-.a-propos li {
-  font-size: 20px;
-  margin: 10px 0;
-  font-weight: normal;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
-}
-
-/* Boutons */
-.btn {
-  display: inline-block;
-  background-color: var(--blanc);
-  color: var(--noir);
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-.btn:hover {
-  background-color: var(--orange);
-}
-
-/* Responsiveness */
-@media (max-width: 768px) {
-  .menu-items {
-    flex-direction: column;
-  }
-}
-/* Section Nous Trouver */
-.nous-trouver {
-  background: var(--orange);
-  color: var(--noir);
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.nous-trouver .adresse {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  color: var(--blanc);
-  line-height: 1.5;
-}
-
-.map-container {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.map {
-  width: 80%;
-  max-width: 800px;
-  height: auto;
-  border: 2px solid var(--noir);
-  border-radius: 8px;
-}
-.nous-rejoindre {
-  background-color: var(--orange); /* Couleur de fond orange */
-  color: var(--noir);
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.rejoindre-overlay {
-  max-width: 800px;
-  margin: auto;
-  background-color: rgba(74, 73, 74, 0.85); /* Fond clair translucide pour lisibilité */
-  padding: 40px;
-  border-radius: 15px;
-  color: var(--blanc);
-}
-
-.texte-rejoindre {
-  margin-bottom: 40px;
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.recrutement-img {
-  width: 100%;
-  max-width: 800px;
-  margin: 20px auto;
-  border-radius: 10px;
-  display: block;
-}
-
-.formulaire-link,
-.discord-link {
-  margin: 15px;
-}
-.nous-contacter {
-  background-color: var(--noir); /* Fond sombre */
-  color: var(--blanc);
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.contact-overlay {
-  max-width: 800px;
-  margin: auto;
-  background-color: rgba(0, 0, 0, 0.85); /* Fond clair pour la lisibilité */
-  padding: 40px;
-  border-radius: 15px;
-}
-
-.contact-details p {
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-.contact-details a {
-  color: var(--orange); /* Lien avec une couleur attrayante */
-  text-decoration: none;
-}
-
-.contact-details a:hover {
-  text-decoration: underline;
-}
-
-.discord-link {
-  display: inline-block;
-  margin-top: 40px;
-}
-
-.logo-burger-shot {
-  width: 250px;
-  margin-top: 30px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.partners {
-  margin-top: 60px;
-}
-
-.partners h3 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.partners ul {
-  list-style: none;
-  font-size: 18px;
-  text-align: left;
-}
-
-.partners li {
-  margin-bottom: 10px;
+body {
+  margin: 0;
+  padding-top: 60px; /* pour éviter que le haut de la page soit masqué par la navbar fixe */
 }
