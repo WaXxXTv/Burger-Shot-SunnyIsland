@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BURGER SHOT</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body style="background: url('media/carte.jpg') no-repeat center center fixed; background-size: cover;">
 
@@ -19,6 +19,7 @@
     <ul>
       <li><a href="#accueil">Accueil</a></li>
       <li><a href="#a-propos">À propos</a></li>
+      <a href="#commande" class="hover:text-orange-400 transition-all">Commande</a>
       <li><a href="#nos-produits">Nos produits</a></li>
       <li><a href="#nous-trouver">Nous trouver</a></li>
       <li><a href="#nous-rejoindre">Nous rejoindre</a></li>
@@ -55,6 +56,111 @@
   </section>
 
   <!-- Ajouter d'autres sections -->
+
+</section>
+<section id="commande" class="section">
+  <h2>Passer une commande</h2>
+  <form id="commande-form" autocomplete="off">
+    <label for="nom">Nom & Prénom</label>
+    <input type="text" id="nom" name="nom" class="form-input" required placeholder="Votre nom complet">
+
+    <label for="tel">Numéro de téléphone</label>
+    <input type="text" id="tel" name="tel" class="form-input" required placeholder="Ex : 06 12 34 56 78">
+
+    <label for="adresse">Adresse de livraison</label>
+    <textarea id="adresse" name="adresse" class="form-input" required placeholder="Votre adresse complète"></textarea>
+
+    <h3>Votre commande</h3>
+
+    <label for="terminator">Terminator</label>
+    <input type="number" id="terminator" name="terminator" class="form-input" min="0" value="0">
+
+    <label for="blackburger">Blackburger</label>
+    <input type="number" id="blackburger" name="blackburger" class="form-input" min="0" value="0">
+
+    <label for="fish">Filet o Fish</label>
+    <input type="number" id="fish" name="fish" class="form-input" min="0" value="0">
+
+    <label for="chicken">Chicken burger</label>
+    <input type="number" id="chicken" name="chicken" class="form-input" min="0" value="0">
+
+    <label for="tenders">Tenders</label>
+    <input type="number" id="tenders" name="tenders" class="form-input" min="0" value="0">
+
+    <label for="frites">Frites</label>
+    <input type="number" id="frites" name="frites" class="form-input" min="0" value="0">
+
+    <label for="coca">Coca cola</label>
+    <input type="number" id="coca" name="coca" class="form-input" min="0" value="0">
+
+    <label for="icetea">Ice Tea</label>
+    <input type="number" id="icetea" name="icetea" class="form-input" min="0" value="0">
+
+    <label for="milkshake">Milkshake</label>
+    <input type="number" id="milkshake" name="milkshake" class="form-input" min="0" value="0">
+
+    <button type="submit" class="btn">Envoyer la commande</button>
+  </form>
+
+  <script>
+    const webhookURL = 'https://discord.com/api/webhooks/1372531806905176066/cONNKHGtU1R823uedsvCqsi22-aNPoTk9isaB81YU5BzkPdoqfye9jfgqVMoeDAScMJ2'; // <-- remplace par ton webhook
+    const roleId = "1364944656416374818"; // <-- remplace par l'ID de ton rôle à pinguer
+
+    document.getElementById("commande-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const nom = document.getElementById("nom").value.trim();
+      const tel = document.getElementById("tel").value.trim();
+      const adresse = document.getElementById("adresse").value.trim();
+
+      const commande = {
+        Terminator: parseInt(document.getElementById("terminator").value) || 0,
+        Blackburger: parseInt(document.getElementById("blackburger").value) || 0,
+        'Filet o Fish': parseInt(document.getElementById("fish").value) || 0,
+        'Chicken burger': parseInt(document.getElementById("chicken").value) || 0,
+        Tenders: parseInt(document.getElementById("tenders").value) || 0,
+        Frites: parseInt(document.getElementById("frites").value) || 0,
+        'Coca cola': parseInt(document.getElementById("coca").value) || 0,
+        'Ice Tea': parseInt(document.getElementById("icetea").value) || 0,
+        Milkshake: parseInt(document.getElementById("milkshake").value) || 0
+      };
+
+      let commandeText = "";
+      for (let item in commande) {
+        if (commande[item] > 0) {
+          commandeText += `- ${item} : ${commande[item]}\n`;
+        }
+      }
+
+      if (!commandeText) {
+        alert("Merci de sélectionner au moins un produit.");
+        return;
+      }
+
+      const payload = {
+        content: `<@&${roleId}> 📦 **Nouvelle commande reçue**\n\n👤 **Nom :** ${nom}\n📞 **Téléphone :** ${tel}\n🏠 **Adresse :** ${adresse}\n\n🍔 **Détails de la commande :**\n${commandeText}`
+      };
+
+      fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(res => {
+        if (res.ok) {
+          alert("Commande envoyée avec succès !");
+          document.getElementById("commande-form").reset();
+        } else {
+          alert("Erreur lors de l'envoi !");
+        }
+      })
+      .catch(err => {
+        console.error("Erreur :", err);
+        alert("Erreur réseau !");
+      });
+    });
+  </script>
+</section>
 
 </body>
 </html>
@@ -204,3 +310,6 @@
         <div class="partner-card">
           <h4>Gentleman Car</h4>
           <p>Club automobile sélect et prestigieux</p>
+             <div class="partner-card">
+          <h4>Bubble Coffee</h4>
+          <p>Café ou on vous servira les plus belles douceur de la ville</p>
