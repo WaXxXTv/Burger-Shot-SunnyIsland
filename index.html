@@ -164,65 +164,26 @@
 </body>
 </html>
 <!-- Section Nos Produits -->
+ 
 <section id="nos-produits" class="section nos-produits">
   <h2>Nos Produits</h2>
-
-  <!-- Grille des produits -->
-  <div class="produits-grille">
-    <!-- Burgers -->
-    <div class="produit-category">
-      <h3>Burgers</h3>
-      <div class="produit-item">
-        <span class="produit-name">Black Burger</span>
-        <span class="produit-prix">18 000$</span>
-      </div>
-      <div class="produit-item">
-        <span class="produit-name">Terminator</span>
-        <span class="produit-prix">18 000$</span>
-      </div>
-      <div class="produit-item">
-        <span class="produit-name">File O Fish</span>
-        <span class="produit-prix">16 500$</span>
-      </div>
-      <div class="produit-item">
-        <span class="produit-name">Chicken Burger</span>
-        <span class="produit-prix">16 500$</span>
-      </div>
-    </div>
-
-    <!-- Accompagnements -->
-    <div class="produit-category">
-      <h3>Accompagnements</h3>
-      <div class="produit-item">
-        <span class="produit-name">Tenders</span>
-        <span class="produit-prix">9 000$</span>
-      </div>
-      <div class="produit-item">
-        <span class="produit-name">Frites</span>
-        <span class="produit-prix">6 500$</span>
-      </div>
-    </div>
-
-    <!-- Desserts -->
-    <div class="produit-category">
-      <h3>Desserts</h3>
-      <div class="produit-item">
-        <span class="produit-name">Milkshake</span>
-        <span class="produit-prix">6 500$</span>
-      </div>
-    </div>
-
-    <!-- Boissons -->
-    <div class="produit-category">
-      <h3>Boissons</h3>
-      <div class="produit-item">
-        <span class="produit-name">Ice Tea</span>
-        <span class="produit-prix">4 000$</span>
-      </div>
-      <div class="produit-item">
-        <span class="produit-name">Coca Cola</span>
-        <span class="produit-prix">4 000$</span>
+  <div class="carousel">
+    <div class="carousel">
+  <div class="carousel-track">
+    <img src="https://image.noelshack.com/fichiers/2025/21/1/1747663606-carte-burger-shot.jpg" alt="Promo 1">
+    <img src="https://image.noelshack.com/fichiers/2025/21/1/1747663642-menu-mai-2025.jpg" alt="Promo 2">
+    <img src="https://image.noelshack.com/fichiers/2025/21/1/1747667290-a-dramatic-product-shot-advertisement-fo-occcbrizqoezq6swznvkrq-t65lz4lkrtwibanfjrtryg-1.jpeg" alt="Promo 3">
+    <img src="https://image.noelshack.com/fichiers/2025/21/1/1747667190-a-dramatic-product-shot-advertisement-sh-kndwgeoos72uxchk1bfnga-ydb27unqq-i-ry45oe-fiq.jpeg" alt="Promo 4">
+  <div class="carousel-nav"></div>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
   </div>
+  
 </section>
 <!-- Section Nous Trouver -->
 <section id="nous-trouver" class="section nous-trouver">
@@ -312,3 +273,43 @@
              <div class="partner-card">
           <h4>Bubble Coffee</h4>
           <p>Un café où l’on vous servira les plus délicieuses douceurs de la ville.</p>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".carousel-track");
+  const images = document.querySelectorAll(".carousel-track img");
+  const dots = document.querySelectorAll(".dot");
+  const nextBtn = document.querySelector(".next");
+  const prevBtn = document.querySelector(".prev");
+
+  const totalImages = images.length;
+  let currentIndex = 0;
+
+  function goToSlide(index) {
+    currentIndex = (index + totalImages) % totalImages;
+    const offset = -currentIndex * 100;
+    track.style.transform = `translateX(${offset}%)`;
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === currentIndex);
+    });
+  }
+
+  nextBtn.addEventListener("click", () => {
+    goToSlide(currentIndex + 1);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    goToSlide(currentIndex - 1);
+  });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => goToSlide(i));
+  });
+
+  setInterval(() => {
+    goToSlide(currentIndex + 1);
+  }, 5000);
+
+  goToSlide(0);
+});
+</script>
